@@ -13,7 +13,7 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 
 // Observe Sections & Elements
-document.querySelectorAll('section, .project-card, #skills span, #journey > div > div').forEach(el => {
+document.querySelectorAll('section, .project-card, #skills span, #journey .space-y-12 > div').forEach(el => {
     observer.observe(el);
 });
 
@@ -34,6 +34,13 @@ function closeResumeModal() {
 }
 
 // Close Modal on Outside Click
-document.getElementById('resumeModal').addEventListener('click', e => {
-    if (e.target.id === 'resumeModal') closeResumeModal();
-});
+const resumeModalEl = document.getElementById('resumeModal');
+if (resumeModalEl) {
+    resumeModalEl.addEventListener('click', e => {
+        if (e.target.id === 'resumeModal') closeResumeModal();
+    });
+}
+
+// Footer year
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
